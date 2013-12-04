@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.1
+apiversion: 2
+description: Attempting to implement the OAuth.io iOS SDK
+author: Joe Beuckman
+license: no
+copyright: no
+
+
+# these should not be edited
+name: OAuth
+moduleid: org.beuckman.oauth.io
+guid: 82bab9ff-9dca-4a76-ab03-2bb06f68d2ec
+platform: iphone
+minsdk: 3.1.3.GA
