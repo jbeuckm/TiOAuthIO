@@ -1,8 +1,10 @@
 ### Usage:
 
-1. Include the module in your Titanium project.
+- Register at [OAuth.io](https://oauth.io/signup) and create an app. Create apps on the requested service develper sites and copy the keys into your OAuth.io app with the [Key Manager](https://oauth.io/key-manager).
 
-2. Add this to tiapp.xml (using example app's url scheme):
+- Include the module in your Titanium project.
+
+- Add this to tiapp.xml (using example app's url scheme):
 
 ```
 <ios>
@@ -22,7 +24,7 @@
 </ios>
 ```
 
-3. Init the module and connect to twitter:
+- Init the module and connect to twitter:
 
 ```
 var OAuth = require('org.beuckman.oauth.io');
