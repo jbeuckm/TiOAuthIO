@@ -27,6 +27,8 @@
 - (void)didReceiveOAuthIOResponse:(NSDictionary *)result;
 - (void)didFailWithOAuthIOError:(NSError *)error;
 
+- (void)oauthDismissed:(NSURL *)url;
+
 @end
 
 @interface OAuthIOModal : UIViewController<UIWebViewDelegate>

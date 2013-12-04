@@ -223,6 +223,8 @@ NSString *_host;
             
             if ([request.URL.host isEqualToString:_host])
                 [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [self.delegate oauthDismissed:url];
 
             return (NO);
         } 

@@ -55,6 +55,13 @@
 }
 
 
+- (void)oauthDismissed:(NSURL *)url
+{
+    [OAuthIOModal handleOAuthIOResponse:url];
+}
+
+
+
 -(id)exampleProp
 {
 	// example property getter
@@ -71,18 +78,20 @@
 
 - (void)didReceiveOAuthIOResponse:(NSDictionary *)result
 {
-//    [self hideActivityIndicator];
-    
-    NSLog(@"\nRESULT:\n-------\n%@\n", result);
     NSLog(@"[INFO] RESULT:\n-------\n%@\n", result);
+
+    [self fireEvent:@"auth" withObject:result];
 }
 
 - (void)didFailWithOAuthIOError:(NSError *)error
 {
-//    [self hideActivityIndicator];
-    
-    NSLog(@"\nERROR:\n--------\n%@\n", error.description);
     NSLog(@"[DEBUG] ERROR--------\n%@\n", error.description);
+    
+    NSMutableDictionary *report = [NSMutableDictionary dictionaryWithObjectsAndKeys:error.description, @"description", nil];
+                                   
+    [self fireEvent:@"error" withObject:report];
+
+    [report autorelease];
 }
 
 
