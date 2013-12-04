@@ -217,9 +217,9 @@ NSString *_host;
     
     if (![url.scheme isEqual:@"http"] && ![url.scheme isEqual:@"https"] && ![url.scheme isEqual:@"file"])
     {
-        if ([[UIApplication sharedApplication]canOpenURL:url])
-        {
-            [[UIApplication sharedApplication]openURL:url];
+//        if ([[UIApplication sharedApplication]canOpenURL:url])
+//        {
+//            [[UIApplication sharedApplication]openURL:url];
             
             if ([request.URL.host isEqualToString:_host])
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -227,7 +227,7 @@ NSString *_host;
             [self.delegate oauthDismissed:url];
 
             return (NO);
-        } 
+//        }
     }
     
     return (YES);
