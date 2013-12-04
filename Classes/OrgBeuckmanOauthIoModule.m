@@ -82,7 +82,7 @@
 //    [self hideActivityIndicator];
     
     NSLog(@"\nERROR:\n--------\n%@\n", error.description);
-    NSLog(@"[ERROR]--------\n%@\n", error.description);
+    NSLog(@"[DEBUG] ERROR--------\n%@\n", error.description);
 }
 
 

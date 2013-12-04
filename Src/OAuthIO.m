@@ -49,13 +49,11 @@
     [params setValue:provider forKey:@"p"];
     [params setValue:_key forKey:@"k"];
     [params setValue:url forKey:@"redirect_uri"];
-    NSLog(@"[DEBUG] redirectWithProvider request with params %@", params);
+
     [request requestWithParams:params success:^(NSData *data, NSURLRequest *request) {
-        NSLog(@"[DEBUG] redirectWithProvider request success");
         _success(data, request);
         
     } error:^(NSError *error) {
-        NSLog(@"[DEBUG] redirectWithProvider request error");
         _error(error);
         
     }];

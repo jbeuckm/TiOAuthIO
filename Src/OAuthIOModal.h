@@ -42,7 +42,7 @@
 @property (nonatomic, retain) id<OAuthIODelegate>   delegate;
 @property (nonatomic, retain) NSString              *provider;
 @property (nonatomic, retain) UINavigationBar       *navigationBar;
-@property (nonatomic, retain) IBOutlet UIWebView    *browser;
+@property (nonatomic, retain) UIWebView    *browser;
 
 + (void) handleOAuthIOResponse:(NSURL *)url;
 

@@ -27,15 +27,6 @@ NSString *_host;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"OAuthIOGetTokens" object:self userInfo:[NSDictionary dictionaryWithObject:url forKey:@"URL"]];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return (self);
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,7 +60,6 @@ NSString *_host;
     
     _key = key;
     _oauth = [[OAuthIO alloc] initWithKey:_key];
-    NSLog(@"[DEBUG] initWithKey %@ created _oauth %@", _key, _oauth);
     
     _rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
 
@@ -81,6 +71,16 @@ NSString *_host;
     [self initNavigationBar];
 
     return (self);
+}
+
+-(void)loadView
+{
+    self.view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)] autorelease];
+    
+    _browser = [[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] applicationFrame].size.width, [[UIScreen mainScreen] applicationFrame].size.height)] autorelease];
+    _browser.delegate = self;
+    
+    [self.view addSubview:_browser];
 }
 
 - (void)getTokens:(NSNotification *)notification
@@ -170,7 +170,6 @@ NSString *_host;
 - (BOOL) initCustomCallbackURL
 {
     NSDictionary *customURLDict = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleURLTypes"] objectAtIndex:0];
-    NSLog(@"[DEBUG] initCustomCallbackURL %@", customURLDict);
     
     if (customURLDict)
     {
@@ -184,10 +183,9 @@ NSString *_host;
     {
         UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"OAuthIO" message:@"You must define a custom scheme and an url identifier in your plist configuration file" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
         [alert show];
-NSLog(@"[DEBUG] initCustomCallbackURL NO");
+
         return (NO);
     }
-NSLog(@"[DEBUG] initCustomCallbackURL YES");
     return (YES);
 
 }
@@ -195,17 +193,17 @@ NSLog(@"[DEBUG] initCustomCallbackURL YES");
 - (void)showWithProvider:(NSString *)provider
 {
     _provider = provider;
-    NSLog(@"[DEBUG] showWithProvider %@", provider);
+
     [_oauth redirectWithProvider:provider andUrl:_callback_url success:^(NSData *data, NSURLRequest *request){
-        NSLog(@"[DEBUG] redirectWithProvider success");
+
         [_rootViewController presentViewController:self animated:YES completion:^{
             
             [_browser loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:request.URL];
-            NSLog(@"[DEBUG] showed root controller with url %@", request.URL);
+
         }];
         
     } error:^(NSError *error) {
-        NSLog(@"[DEBUG] redirectWithProvider error");
+
         if ([self.delegate respondsToSelector:@selector(oauth:didFailWithError:)])
             [self.delegate didFailWithOAuthIOError:error];
     }];
@@ -231,6 +229,11 @@ NSLog(@"[DEBUG] initCustomCallbackURL YES");
     }
     
     return (YES);
+}
+
+-(void) webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"[DEBUG] webview loaded");
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
