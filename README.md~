@@ -1,0 +1,40 @@
+### Usage:
+
+
+Add this to tiapp.xml (using example app's url scheme):
+
+```
+<ios>
+    <plist>
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLName</key>
+                <string>localhost</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>myappname</string>
+ 
+                </array>
+            </dict>
+        </array>
+    </plist>
+</ios>
+```
+
+To init the module and connect to twitter:
+
+```
+Include the module in your Titanium project.
+var OAuth = require('org.beuckman.oauth.io');
+Ti.API.info("module is => " + OAuth);
+
+
+OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
+
+
+function connectTwitter() {
+    Ti.API.info("will connect twitter");
+    OAuth.connect({provider:"twitter"});
+}
+```
