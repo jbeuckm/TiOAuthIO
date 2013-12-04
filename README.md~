@@ -1,7 +1,8 @@
 ### Usage:
 
+1. Include the module in your Titanium project.
 
-Add this to tiapp.xml (using example app's url scheme):
+2. Add this to tiapp.xml (using example app's url scheme):
 
 ```
 <ios>
@@ -22,16 +23,13 @@ Add this to tiapp.xml (using example app's url scheme):
 </ios>
 ```
 
-To init the module and connect to twitter:
+3. Init the module and connect to twitter:
 
 ```
-Include the module in your Titanium project.
-var OAuth = require('org.beuckman.oauth.io');
-Ti.API.info("module is => " + OAuth);
 
+var OAuth = require('org.beuckman.oauth.io');
 
 OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
-
 
 function connectTwitter() {
     Ti.API.info("will connect twitter");

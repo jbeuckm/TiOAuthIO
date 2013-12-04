@@ -15,7 +15,6 @@
                 <key>CFBundleURLSchemes</key>
                 <array>
                     <string>myappname</string>
- 
                 </array>
             </dict>
         </array>
@@ -26,13 +25,11 @@
 3. Init the module and connect to twitter:
 
 ```
-
 var OAuth = require('org.beuckman.oauth.io');
 
 OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
 
 function connectTwitter() {
-    Ti.API.info("will connect twitter");
     OAuth.connect({provider:"twitter"});
 }
 ```
