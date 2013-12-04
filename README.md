@@ -1,6 +1,6 @@
 ### Usage:
 
-- Register at [OAuth.io](https://oauth.io/signup) and create an app. Create apps on the requested service develper sites and copy the keys into your OAuth.io app with the Key Manager.
+- Register at [OAuth.io](https://oauth.io/signup) and create an app. Create apps on the requested service develper sites and copy the keys into your OAuth.io app with the [Key Manager](https://oauth.io/key-manager).
 
 - Include the module in your Titanium project.
 
