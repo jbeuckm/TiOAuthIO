@@ -16,7 +16,7 @@ win.open();
 var OAuth = require('org.beuckman.oauth.io');
 Ti.API.info("module is => " + OAuth);
 
-OAuth.init({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
+OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
 
 var twitterButton = Ti.UI.createButton({
     title: "Connect Twitter"

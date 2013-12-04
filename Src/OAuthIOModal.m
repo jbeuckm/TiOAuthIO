@@ -201,7 +201,7 @@ NSLog(@"[DEBUG] initCustomCallbackURL YES");
         [_rootViewController presentViewController:self animated:YES completion:^{
             
             [_browser loadData:data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:request.URL];
-            NSLog(@"[DEBUG] showed root controller");
+            NSLog(@"[DEBUG] showed root controller with url %@", request.URL);
         }];
         
     } error:^(NSError *error) {
