@@ -36,6 +36,7 @@
 
     NSString *provider = [TiUtils stringValue:[args objectForKey:@"provider"]];
     [provider retain];
+    currentProvider = provider;
     
     [_oauthioModal showWithProvider:provider];
     
@@ -80,7 +81,10 @@
 {
     NSLog(@"[INFO] RESULT:\n-------\n%@\n", result);
 
-    [self fireEvent:@"auth" withObject:result];
+    NSMutableDictionary *event = [NSMutableDictionary dictionaryWithDictionary:result];
+    [event setObject:currentProvider forKey:@"provider"];
+    
+    [self fireEvent:@"auth" withObject:event];
 }
 
 - (void)didFailWithOAuthIOError:(NSError *)error

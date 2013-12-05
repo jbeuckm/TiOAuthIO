@@ -9,6 +9,7 @@
 
 @interface OrgBeuckmanOauthIoModule : TiModule <OAuthIODelegate>
 {
+    NSString *currentProvider;
 }
 
 @property (nonatomic, retain) OAuthIOModal *oauthioModal;
