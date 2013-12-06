@@ -4,7 +4,7 @@
 
 - Include this module in your Titanium project.
 
-- Add this to tiapp.xml (using example app's url scheme):
+- Fill in your custom URL scheme and add this to your project's tiapp.xml (using example app url scheme):
 
 ```
 <ios>
@@ -30,6 +30,17 @@
 var OAuth = require('org.beuckman.oauth.io');
 
 OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
+
+OAuth.addEventListener("auth", function(e){
+	Ti.API.info(e);
+	var tokens = Ti.App.Properties.getObject("oauthio", {});
+	tokens[e.provider] = {
+		oauth_token: e.oauth_token,
+		oauth_token_secret: e.oauth_token_secret
+	};
+	Ti.App.Properties.setObject("oauthio", tokens);
+});
+
 
 function connectTwitter() {
     OAuth.connect({provider:"twitter"});
