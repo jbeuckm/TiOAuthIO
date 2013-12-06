@@ -6,7 +6,7 @@
 
 - Fill in your custom URL scheme and add this to your project's tiapp.xml (using example app url scheme):
 
-```
+```xml
 <ios>
     <plist>
         <key>CFBundleURLTypes</key>
@@ -26,7 +26,7 @@
 
 - Init the module and connect to twitter:
 
-```
+```javascript
 var OAuth = require('org.beuckman.oauth.io');
 
 OAuth.initWithKey({publicKey:"WmKGOEutadU6jZ8agshVaz1VMiM"});
