@@ -1,6 +1,6 @@
 ### Purpose
 
-A Titanium module to implement the [https://github.com/oauth-io/oauth-ios](OAuth.io iOS SDK)
+A Titanium module to implement the [OAuth.io iOS SDK](https://github.com/oauth-io/oauth-ios)
 
 ### Usage
 
