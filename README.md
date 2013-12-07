@@ -1,4 +1,8 @@
-### Usage:
+### Purpose
+
+A Titanium module to implement the [https://github.com/oauth-io/oauth-ios](OAuth.io iOS SDK)
+
+### Usage
 
 - Register at [OAuth.io](https://oauth.io/signup) and create an app. Create apps on the requested service develper sites and copy the keys into your OAuth.io app with the [Key Manager](https://oauth.io/key-manager).
 
