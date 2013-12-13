@@ -8,25 +8,7 @@ A Titanium module to implement the [OAuth.io iOS SDK](https://github.com/oauth-i
 
 - Include this module in your Titanium project.
 
-- Fill in your custom URL scheme and add this to your project's tiapp.xml (using example app url scheme):
-
-```xml
-<ios>
-    <plist>
-        <key>CFBundleURLTypes</key>
-        <array>
-            <dict>
-                <key>CFBundleURLName</key>
-                <string>localhost</string>
-                <key>CFBundleURLSchemes</key>
-                <array>
-                    <string>myappname</string>
-                </array>
-            </dict>
-        </array>
-    </plist>
-</ios>
-```
+- Add your project's bundle ID as an "available domain" at oath.io in your key manager app edit form.
 
 - Init the module and connect to twitter:
 
